@@ -256,11 +256,11 @@
           <h1 style="margin:0;">Cheap Subdomains</h1>
         </div>
         <div class="subtitle">
-          Only $0.20 for two months. Pay with Nano, Banano, USDC, or BTC-LN. Check availability below.
+          Only $0.10 for two months. Pay with Nano, Banano, USDC, or BTC-LN. Check availability below.
         </div>
       </div>
       <div class="top-right">
-        <div class="pill">Static • Editable via JSON</div>
+        <div class="pill">support@mysub.site</div>
       </div>
     </header>
 
@@ -292,11 +292,11 @@
                   <div class="small">/ 2 months</div>
                 </div>
                 <div class="price-large">
-                  <span id="price-value">$0.20</span>
+                  <span id="price-value">$0.10</span>
                   <span id="na-badge" style="display:none; font-size:0.9rem; margin-left:4px; font-weight:600;">N/A</span>
                 </div>
                 <div class="small" id="price-note">
-                  Editable in <span class="inline-code">config.json</span>. Price scales in two-month blocks (e.g., 4 months = $0.40).
+                  Premium subdomains start at $1 for 2 months.
                 </div>
               </div>
               <a id="details-link" class="details-link" style="display:none;" href="#">View subdomain details</a>
@@ -341,16 +341,13 @@
     <div class="card">
       <div class="section-title">Accepted Payments</div>
       <div style="font-size:0.9rem;">
-        Send the equivalent USD amount (default shown above) via one of these. Update addresses/instructions in <span class="inline-code">config.json</span>.
+        The amount to send (which will be converted from USD to the preferred coin) will be specified in the reply email.
       </div>
       <div class="payments">
-        <div class="payment-pill">BTC-LN</div>
-        <div class="payment-pill">Nano</div>
-        <div class="payment-pill">Banano</div>
-        <div class="payment-pill">USDC</div>
-      </div>
-      <div class="small" style="margin-top:4px;">
-        Editable price or contact email in <span class="inline-code">config.json</span>. Mark taken subdomains in <span class="inline-code">subdomains.json</span> (add full name like <code>coolname.mysub.site</code>). Availability is checked client-side; no backend needed.
+        <div class="payment-pill">Bitcoin (Lightning)</div>
+        <div class="payment-pill">Nano (5% discount on non-premium domains)</div>
+        <div class="payment-pill">Banano (5% discount on non-premium domains)</div>
+        <div class="payment-pill">USDC (Polygon, Base)</div>
       </div>
     </div>
 
@@ -363,12 +360,11 @@
     </div>
 
     <div class="footer">
-      Hosted via GitHub Pages. All logic runs in the browser. Place <code>index.html</code>, <code>config.json</code>, <code>subdomains.json</code>, and <code>records.json</code> together in the repo root.
-    </div>
+      @ 2025 mysub.site. Hosted via GitHub Pages.
   </div>
 
   <script>
-    const DEFAULT_PRICE = 0.2; // per 2 months
+    const DEFAULT_PRICE = 0.1; // per 2 months
     let config = {};
     let subdomains = {};
 
@@ -452,17 +448,17 @@
       const template = `Hello,
 
 I'd like to register the subdomain: ${full || 'example.mysub.site'}
-Name: First Last
+Name: John Doe
 Duration: 2 months ($${(available ? price.toFixed(2) : 'N/A')})
+Management password: example123
 DNS record(s):
   1. Type: A, Points to: 192.0.2.1
   2. Type: TXT, Points to: "verification=abc123"
 
 Payment method: [Nano / Banano / USDC / BTC-LN]
-Payment details / invoice / tx id: ____________________
 
 Please confirm and provision. Thanks,
-First Last`;
+John Doe`;
       emailBody.value = template;
 
       // Details link
@@ -495,3 +491,4 @@ First Last`;
   </script>
 </body>
 </html>
+
