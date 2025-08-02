@@ -1,0 +1,13 @@
+{
+  "taken.mysub.site": {
+    "available": false
+  },
+  "reserved.mysub.site": {
+    "available": false
+  },
+  "special.mysub.site": {
+    "available": true,
+    "price": 0.5,
+    "note": "Custom tier"
+  }
+}

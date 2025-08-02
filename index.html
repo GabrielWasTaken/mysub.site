@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cheap Subdomains • mysub.site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg:#0f172a;
+      --card:#1f2140;
+      --radius:12px;
+      --shadow:0 20px 60px -10px rgba(0,205,232,0.25);
+      --primary:#00cde8;
+      --text:#e6e9ff;
+      --muted:#8a94b1;
+      --border:rgba(255,255,255,0.08);
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body {
+      margin:0;
+      background: linear-gradient(135deg,#0b1023 0%,#1e244f 100%);
+      color: var(--text);
+      min-height:100vh;
+      padding:1rem;
+      display:flex;
+      justify-content:center;
+    }
+    .wrapper {
+      width:100%;
+      max-width:1024px;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+    }
+    header {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap:8px;
+    }
+    .title-block {
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    h1 {
+      margin:0;
+      font-size:2rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .badge {
+      background: rgba(0,205,232,0.1);
+      padding:6px 14px;
+      border-radius:999px;
+      font-size:0.7rem;
+      display:inline-block;
+      font-weight:600;
+      color:#fff;
+    }
+    .subtitle {
+      font-size:0.9rem;
+      color: var(--muted);
+    }
+    .top-right {
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding:1.5rem 1.75rem;
+      box-shadow: var(--shadow);
+      border:1px solid var(--border);
+      position:relative;
+    }
+    .flex { display:flex; gap:1rem; }
+    .split { display:grid; grid-template-columns:2fr 1fr; gap:1.5rem; }
+    .field {
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      margin-bottom:8px;
+    }
+    label {
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:600;
+      margin-bottom:2px;
+    }
+    input[type=text] {
+      background: rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.12);
+      padding:10px 14px;
+      border-radius:8px;
+      font-size:1rem;
+      color: var(--text);
+      outline:none;
+      width:100%;
+    }
+    .subdomain-input {
+      display:flex;
+      gap:4px;
+      flex:1;
+    }
+    .suffix {
+      background: rgba(255,255,255,0.06);
+      padding:10px 14px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      font-size:1rem;
+      border:1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+    .price-box {
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.15);
+      padding:14px 16px;
+      border-radius:8px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:6px;
+    }
+    .price-large {
+      font-size:1.75rem;
+      margin:0;
+      font-weight:700;
+      display:flex;
+      align-items:baseline;
+      gap:6px;
+    }
+    .price-small {
+      font-size:0.85rem;
+      color: var(--muted);
+      margin:0;
+    }
+    .note {
+      background: #1b224e;
+      border:1px solid rgba(0,205,232,0.2);
+      padding:12px 16px;
+      border-radius:8px;
+      font-size:0.85rem;
+      display:flex;
+      gap:10px;
+    }
+    pre, textarea {
+      background: #0f1c44;
+      border:1px solid rgba(255,255,255,0.12);
+      padding:12px;
+      border-radius:6px;
+      font-family: ui-monospace,monaco,monospace;
+      font-size:0.85rem;
+      overflow:auto;
+      color: var(--text);
+      width:100%;
+      resize:vertical;
+    }
+    .small {
+      font-size:0.75rem;
+      color: var(--muted);
+    }
+    .pill {
+      background: rgba(0,205,232,0.15);
+      padding:6px 14px;
+      border-radius:999px;
+      display:inline-block;
+      font-weight:600;
+      font-size:0.7rem;
+    }
+    .section-title {
+      font-size:1.1rem;
+      font-weight:600;
+      margin-bottom:6px;
+    }
+    .inline-code {
+      background: rgba(255,255,255,0.08);
+      padding:2px 6px;
+      border-radius:4px;
+      font-family: ui-monospace,monaco,monospace;
+    }
+    .payments {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .payment-pill {
+      background: rgba(255,255,255,0.05);
+      padding:8px 14px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:0.8rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .editable-note {
+      background: rgba(255,255,255,0.04);
+      padding:8px 12px;
+      border-radius:6px;
+      font-size:0.7rem;
+      display:inline-block;
+      margin-top:4px;
+    }
+    .footer {
+      margin-top:8px;
+      font-size:0.65rem;
+      color: var(--muted);
+      text-align:center;
+    }
+    .status {
+      font-size:0.85rem;
+      margin-top:6px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .tag {
+      background: rgba(255,255,255,0.08);
+      padding:4px 10px;
+      border-radius:6px;
+      font-size:0.65rem;
+      display:inline-block;
+    }
+    @media (max-width:1000px){
+      .split { grid-template-columns:1fr; }
+      .flex { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="title-block">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="badge">.MYSUB.SITE</div>
+          <h1 style="margin:0;">Cheap Subdomains</h1>
+        </div>
+        <div class="subtitle">
+          Only $0.20 for two months. Pay with Nano, Banano, USDC, or BTC-LN. Check availability below.
+        </div>
+      </div>
+      <div class="top-right">
+        <div class="pill">Static • Editable via JSON</div>
+      </div>
+    </header>
+
+    <!-- Search + price -->
+    <div class="card">
+      <div class="split">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="section-title">Check Subdomain Availability</div>
+          <div style="font-size:0.9rem; margin-bottom:6px;">
+            Type your desired subdomain (without <span class="inline-code">.mysub.site</span>) to see if it's taken and the current price. To purchase, follow the email template below.
+          </div>
+
+          <div class="flex" style="gap:12px;">
+            <div class="field" style="flex:2; min-width:220px;">
+              <label for="subdomain-input">Subdomain</label>
+              <div style="display:flex; gap:4px;">
+                <div class="subdomain-input" style="flex:1;">
+                  <input type="text" id="subdomain-input" placeholder="example" aria-label="subdomain part" />
+                </div>
+                <div class="suffix">.mysub.site</div>
+              </div>
+              <div class="small">Type a subdomain to check availability.</div>
+            </div>
+            <div style="flex:1;">
+              <label style="visibility:hidden;">Price</label>
+              <div class="price-box" aria-label="price box">
+                <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                  <div style="font-weight:600;">Price</div>
+                  <div class="small">/ 2 months</div>
+                </div>
+                <div class="price-large">
+                  <span id="price-value">$0.20</span>
+                </div>
+                <div class="small">
+                  Editable in <span class="inline-code">config.json</span>. Price scales in two-month blocks (e.g., 4 months = $0.40).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="status" id="availability-status">
+            <div>Enter a subdomain to begin.</div>
+          </div>
+        </div>
+
+        <!-- Email template box -->
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="section-title">How to Order</div>
+          <div style="font-size:0.9rem;">
+            There is no automatic checkout. Copy the template below, fill in your desired values, and send an email to the contact address. After you pay (instructions below), the subdomain will be provisioned manually.
+          </div>
+
+          <div class="field">
+            <label for="recipient">Email recipient</label>
+            <input type="text" id="recipient" value="support@mysub.site" />
+          </div>
+
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" readonly />
+          </div>
+
+          <div class="field">
+            <label for="email-body">Email body template (replace placeholders):</label>
+            <textarea id="email-body" rows="11" spellcheck="false"></textarea>
+          </div>
+
+          <div class="small">
+            Edit the values, including the subdomain you checked above. Then send to the email shown. You'll coordinate payment manually.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accepted Payments -->
+    <div class="card">
+      <div class="section-title">Accepted Payments</div>
+      <div style="font-size:0.9rem;">
+        Send the equivalent USD amount (default shown above) via one of these. Update addresses/instructions in <span class="inline-code">config.json</span>.
+      </div>
+      <div class="payments">
+        <div class="payment-pill">BTC-LN</div>
+        <div class="payment-pill">Nano</div>
+        <div class="payment-pill">Banano</div>
+        <div class="payment-pill">USDC</div>
+      </div>
+      <div class="small" style="margin-top:4px;">
+        Editable price or contact email in <span class="inline-code">config.json</span>. Mark taken subdomains in <span class="inline-code">subdomains.json</span> (add full name like <code>coolname.mysub.site</code>). Availability is checked client-side; no backend needed.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="note">
+        <div>
+          <strong>Note:</strong> To change DNS records after registration you must email the operator. Subdomains can only be registered in 2-month increments; to keep one active you must re-register (send a new email) before/after expiration.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Hosted via GitHub Pages. All logic runs in the browser. Place <code>index.html</code>, <code>config.json</code>, and <code>subdomains.json</code> together in the repo root.
+    </div>
+  </div>
+
+  <script>
+    const DEFAULT_PRICE = 0.2; // per 2 months
+    let config = {}; // from config.json
+    let subdomains = {}; // from subdomains.json
+
+    async function loadJSON(path) {
+      try {
+        const r = await fetch(path + '?t=' + Date.now(), {cache: 'no-store'});
+        if (!r.ok) throw new Error('fail');
+        return await r.json();
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function sanitize(s) {
+      return s.trim().toLowerCase();
+    }
+
+    function updateUI() {
+      const raw = document.getElementById('subdomain-input').value;
+      const name = sanitize(raw);
+      const full = name ? `${name}.mysub.site` : '';
+      const subjectEl = document.getElementById('subject');
+      const recipientEl = document.getElementById('recipient');
+      const emailBody = document.getElementById('email-body');
+      const availabilityStatus = document.getElementById('availability-status');
+      const priceDisplay = document.getElementById('price-value');
+
+      // Subject
+      subjectEl.value = full ? `Subdomain purchase request: ${full}` : '';
+
+      // Determine availability and price
+      let available = true;
+      let price = DEFAULT_PRICE;
+      if (subdomains[full] && subdomains[full].hasOwnProperty('available')) {
+        available = subdomains[full].available;
+      }
+      if (config.prices && config.prices[full] !== undefined) {
+        price = config.prices[full];
+      } else if (subdomains[full] && subdomains[full].price !== undefined) {
+        price = subdomains[full].price;
+      } else if (config.default_price !== undefined) {
+        price = config.default_price;
+      }
+
+      priceDisplay.textContent = `$${price.toFixed(2)}`;
+
+      // Availability text
+      availabilityStatus.innerHTML = '';
+      if (!name) {
+        availabilityStatus.textContent = 'Enter a subdomain to begin.';
+      } else if (!full.endsWith('.mysub.site')) {
+        availabilityStatus.innerHTML = '<div style="color:#ff9f43;"><strong>Invalid:</strong> Subdomain must be alphanumeric (no spaces) and will be used as <code>' + full + '</code>.</div>';
+      } else if (!available) {
+        const div = document.createElement('div');
+        div.innerHTML = `<span style="color:#ff6b6b;"><strong>Taken / unavailable</strong></span>`;
+        availabilityStatus.appendChild(div);
+      } else {
+        const div = document.createElement('div');
+        div.innerHTML = `<span style="color:#3be8a3;"><strong>Available</strong></span> • Price: <strong>$${price.toFixed(2)}</strong> / 2 months`;
+        availabilityStatus.appendChild(div);
+      }
+
+      // Email body template
+      const template = `Hello,
+
+I'd like to register the subdomain: ${full || 'example.mysub.site'}
+Name: First Last
+Duration: 2 months ($${price.toFixed(2)})
+DNS record(s):
+  1. Type: A, Points to: 192.0.2.1
+  2. Type: TXT, Points to: "verification=abc123"
+
+Payment method: [Nano / Banano / USDC / BTC-LN]
+Payment details / invoice / tx id: ____________________
+
+Please confirm and provision. Thanks,
+First Last`;
+      emailBody.value = template;
+    }
+
+    document.getElementById('subdomain-input').addEventListener('input', updateUI);
+    document.getElementById('subdomain-input').addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') updateUI();
+    });
+
+    // Initial load
+    Promise.all([
+      loadJSON('config.json'),
+      loadJSON('subdomains.json')
+    ]).then(([cfg, subs]) => {
+      config = cfg || {};
+      subdomains = subs || {};
+      // Pre-fill if query param
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) {
+        const cleaned = q.replace('.mysub.site','').trim();
+        document.getElementById('subdomain-input').value = cleaned;
+      }
+      updateUI();
+    });
+  </script>
+</body>
+</html>
