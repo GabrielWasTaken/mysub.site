@@ -2,8 +2,6 @@
   "default_price": 0.2,
   "contact_email": "support@mysub.site",
   "prices": {
-    "premium.mysub.site": 1.0,
-    "website.mysub.site": 0.2
   },
   "payment_instructions": {
     "BTC-LN": "Provide invoice manually after you email.",
@@ -11,4 +9,5 @@
     "Banano": "Send equivalent USD to Banano address.",
     "USDC": "Send USDC on your chosen chain; invoice/confirmation will follow."
   }
+
 }
