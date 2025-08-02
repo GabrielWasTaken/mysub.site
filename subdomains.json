@@ -1,13 +1,84 @@
 {
-  "taken.mysub.site": {
-    "available": false
-  },
   "reserved.mysub.site": {
     "available": false
   },
-  "special.mysub.site": {
+  "register.mysub.site": {
+    "available": false
+  },
+  "shop.mysub.site": {
+    "available": false
+  },
+  "store.mysub.site": {
+    "available": false
+  },
+  "pay.mysub.site": {
+    "available": false
+  },
+  "google.mysub.site": {
+    "available": false
+  },
+  "checkout.mysub.site": {
+    "available": false
+  },
+  "buy.mysub.site": {
+    "available": false
+  },
+  "wallet.mysub.site": {
+    "available": false
+  },
+  "website.mysub.site": {
     "available": true,
-    "price": 0.5,
-    "note": "Custom tier"
+    "price": 2,
+    "note": "Premium subdomain"
+  },
+  "webpage.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "domain.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "subdomain.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "hello.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "cat.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "dog.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "server.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "minecraft.mysub.site": {
+    "available": true,
+    "price": 2,
+    "note": "Premium subdomain"
+  },
+  "sub.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
+  },
+  "monkey.mysub.site": {
+    "available": true,
+    "price": 1,
+    "note": "Premium subdomain"
   }
 }
