@@ -12,23 +12,5 @@
         "value": "verification=abc123"
       }
     ]
-  },
-  "taken.mysub.site": {
-    "password": "anotherpw",
-    "records": [
-      {
-        "type": "A",
-        "points_to": "198.51.100.5"
-      }
-    ]
-  },
-  "special.mysub.site": {
-    "password": "specialpw",
-    "records": [
-      {
-        "type": "CNAME",
-        "value": "target.example.com"
-      }
-    ]
   }
 }
