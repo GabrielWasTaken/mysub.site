@@ -1,0 +1,34 @@
+{
+  "example.mysub.site": {
+    "password": "secret123",
+    "records": [
+      {
+        "type": "A",
+        "points_to": "192.0.2.1",
+        "ttl": "3600"
+      },
+      {
+        "type": "TXT",
+        "value": "verification=abc123"
+      }
+    ]
+  },
+  "taken.mysub.site": {
+    "password": "anotherpw",
+    "records": [
+      {
+        "type": "A",
+        "points_to": "198.51.100.5"
+      }
+    ]
+  },
+  "special.mysub.site": {
+    "password": "specialpw",
+    "records": [
+      {
+        "type": "CNAME",
+        "value": "target.example.com"
+      }
+    ]
+  }
+}
