@@ -26,6 +26,9 @@
   "wallet.mysub.site": {
     "available": false
   },
+  "example.mysub.site": {
+    "available": false
+  },
   "website.mysub.site": {
     "available": true,
     "price": 2,
@@ -82,3 +85,4 @@
     "note": "Premium subdomain"
   }
 }
+
