@@ -230,6 +230,17 @@
       font-size:0.65rem;
       display:inline-block;
     }
+    .details-link {
+      margin-top:6px;
+      display:inline-block;
+      font-size:0.85rem;
+      text-decoration:none;
+      background: rgba(0,205,232,0.08);
+      padding:8px 12px;
+      border-radius:6px;
+      font-weight:600;
+      color: #fff;
+    }
     @media (max-width:1000px){
       .split { grid-template-columns:1fr; }
       .flex { flex-direction:column; }
@@ -282,11 +293,13 @@
                 </div>
                 <div class="price-large">
                   <span id="price-value">$0.20</span>
+                  <span id="na-badge" style="display:none; font-size:0.9rem; margin-left:4px; font-weight:600;">N/A</span>
                 </div>
-                <div class="small">
+                <div class="small" id="price-note">
                   Editable in <span class="inline-code">config.json</span>. Price scales in two-month blocks (e.g., 4 months = $0.40).
                 </div>
               </div>
+              <a id="details-link" class="details-link" style="display:none;" href="#">View subdomain details</a>
             </div>
           </div>
 
@@ -350,14 +363,14 @@
     </div>
 
     <div class="footer">
-      Hosted via GitHub Pages. All logic runs in the browser. Place <code>index.html</code>, <code>config.json</code>, and <code>subdomains.json</code> together in the repo root.
+      Hosted via GitHub Pages. All logic runs in the browser. Place <code>index.html</code>, <code>config.json</code>, <code>subdomains.json</code>, and <code>records.json</code> together in the repo root.
     </div>
   </div>
 
   <script>
     const DEFAULT_PRICE = 0.2; // per 2 months
-    let config = {}; // from config.json
-    let subdomains = {}; // from subdomains.json
+    let config = {};
+    let subdomains = {};
 
     async function loadJSON(path) {
       try {
@@ -382,6 +395,8 @@
       const emailBody = document.getElementById('email-body');
       const availabilityStatus = document.getElementById('availability-status');
       const priceDisplay = document.getElementById('price-value');
+      const naBadge = document.getElementById('na-badge');
+      const detailsLink = document.getElementById('details-link');
 
       // Subject
       subjectEl.value = full ? `Subdomain purchase request: ${full}` : '';
@@ -400,22 +415,37 @@
         price = config.default_price;
       }
 
-      priceDisplay.textContent = `$${price.toFixed(2)}`;
+      // Price display logic
+      if (!available) {
+        priceDisplay.textContent = '';
+        naBadge.style.display = 'inline';
+        document.getElementById('price-note').textContent = 'Unavailable subdomain; price not applicable.';
+      } else {
+        naBadge.style.display = 'none';
+        priceDisplay.textContent = `$${price.toFixed(2)}`;
+        document.getElementById('price-note').innerHTML = 'Editable in <span class="inline-code">config.json</span>. Price scales in two-month blocks (e.g., 4 months = $0.40).';
+      }
 
       // Availability text
       availabilityStatus.innerHTML = '';
       if (!name) {
         availabilityStatus.textContent = 'Enter a subdomain to begin.';
+        detailsLink.style.display = 'none';
       } else if (!full.endsWith('.mysub.site')) {
-        availabilityStatus.innerHTML = '<div style="color:#ff9f43;"><strong>Invalid:</strong> Subdomain must be alphanumeric (no spaces) and will be used as <code>' + full + '</code>.</div>';
+        const div = document.createElement('div');
+        div.innerHTML = '<span style="color:#ff9f43;"><strong>Invalid:</strong> Subdomain format looks wrong.</span>';
+        availabilityStatus.appendChild(div);
+        detailsLink.style.display = 'none';
       } else if (!available) {
         const div = document.createElement('div');
         div.innerHTML = `<span style="color:#ff6b6b;"><strong>Taken / unavailable</strong></span>`;
         availabilityStatus.appendChild(div);
+        detailsLink.style.display = 'inline-block';
       } else {
         const div = document.createElement('div');
         div.innerHTML = `<span style="color:#3be8a3;"><strong>Available</strong></span> • Price: <strong>$${price.toFixed(2)}</strong> / 2 months`;
         availabilityStatus.appendChild(div);
+        detailsLink.style.display = 'inline-block';
       }
 
       // Email body template
@@ -423,7 +453,7 @@
 
 I'd like to register the subdomain: ${full || 'example.mysub.site'}
 Name: First Last
-Duration: 2 months ($${price.toFixed(2)})
+Duration: 2 months ($${(available ? price.toFixed(2) : 'N/A')})
 DNS record(s):
   1. Type: A, Points to: 192.0.2.1
   2. Type: TXT, Points to: "verification=abc123"
@@ -434,6 +464,11 @@ Payment details / invoice / tx id: ____________________
 Please confirm and provision. Thanks,
 First Last`;
       emailBody.value = template;
+
+      // Details link
+      if (full) {
+        detailsLink.href = `details.html?q=${encodeURIComponent(full)}`;
+      }
     }
 
     document.getElementById('subdomain-input').addEventListener('input', updateUI);
