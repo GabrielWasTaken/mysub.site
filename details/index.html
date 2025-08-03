@@ -371,9 +371,9 @@
 
     // Initialize
     Promise.all([
-      loadJSON('config.json'),
-      loadJSON('subdomains.json'),
-      loadJSON('records.json')
+      loadJSON('/config.json'),
+      loadJSON('/subdomains.json'),
+      loadJSON('/records.json')
     ]).then(([cfg, subs, recs]) => {
       config = cfg || {};
       subdomains = subs || {};
@@ -391,4 +391,5 @@
 </body>
 
 </html>
+
 
