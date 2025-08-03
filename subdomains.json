@@ -38,16 +38,20 @@
   "wps.mysub.site": {
     "available": false
   },
-  "website.mysub.site": {
-    "available": true,
-    "price": 0.5,
-    "note": "Premium subdomain"
-  },
   "admin.mysub.site": {
     "available": false
   },
   "panel.mysub.site": {
     "available": false
+  },
+  "cantoneswaza.mysub.site": {
+    "available": false,
+    "note": "Registered 3/8/25 Expires 3/10/25"
+  },
+  "website.mysub.site": {
+    "available": true,
+    "price": 0.5,
+    "note": "Premium subdomain"
   },
   "vps.mysub.site": {
     "available": true,
@@ -110,6 +114,7 @@
     "note": "Premium subdomain"
   }
 }
+
 
 
 
