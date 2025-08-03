@@ -35,7 +35,26 @@
   "*.mysub.site": {
     "available": false
   },
+  "wps.mysub.site": {
+    "available": false
+  },
   "website.mysub.site": {
+    "available": true,
+    "price": 0.5,
+    "note": "Premium subdomain"
+  },
+  "admin.mysub.site": {
+    "available": false
+  },
+  "panel.mysub.site": {
+    "available": false
+  },
+  "vps.mysub.site": {
+    "available": true,
+    "price": 0.5,
+    "note": "Premium subdomain"
+  },
+  "web.mysub.site": {
     "available": true,
     "price": 0.5,
     "note": "Premium subdomain"
@@ -91,5 +110,6 @@
     "note": "Premium subdomain"
   }
 }
+
 
 
