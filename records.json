@@ -22,13 +22,19 @@
       }
     ]
   },
-  "wps.mysub.site": {
-    "password": "secret123",
+  "cantoneswaza.mysub.site": {
+    "password": "0123456",
     "records": [
       {
-        "type": "CNAME",
-        "value": "target.example.com"
+        "type": "A",
+        "value": "192.0.2.1"
+      }
+      {
+        "type": "TXT",
+        "value": "verification=abc123"
+        "ttl": "60"
       }
     ]
   }
 }
+
