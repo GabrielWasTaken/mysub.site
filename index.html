@@ -299,7 +299,7 @@
                   50% discount on non-premium domains when paying with Nano/Banano.
                 </div>
               </div>
-              <a id="details-link" class="details-link" style="display:none;" href="#">View subdomain details</a>
+              <a id="details-link" class="details-link" style="display:none;" href="/details/">View subdomain details</a>
             </div>
           </div>
 
@@ -347,14 +347,20 @@
         <div class="payment-pill">Bitcoin (Lightning)</div>
         <div class="payment-pill">Nano (50% discount on non-premium domains)</div>
         <div class="payment-pill">Banano (50% discount on non-premium domains)</div>
-        <div class="payment-pill">USDC (Polygon, Base)</div>
+        <div class="payment-pill">USDC/USDT (Polygon, Base, Solana)</div>
       </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Terms of service</div>
+      <div style="font-size:0.9rem;">
+        By using this service you agree to our ToS, please read it carefully by clicking <a href="/terms-of-service/">here</a>.
     </div>
 
     <div class="card">
       <div class="note">
         <div>
-          <strong>Note:</strong> To change DNS records after registration you must email the operator. Subdomains can only be registered in 2-month increments; to keep one active you must re-register (send a new email) before/after expiration.
+          <strong>Note:</strong> To change DNS records after registration you must email the operator. Subdomains can only be registered in 2-month periods; to keep one active you must re-register (send a new email) at least one day after expiration.
         </div>
       </div>
     </div>
@@ -448,17 +454,17 @@
       const template = `Hello,
 
 I'd like to register the subdomain: ${full || 'example.mysub.site'}
-Name: John Doe
-Duration: 2 months ($${(available ? price.toFixed(2) : 'N/A')})
-Management password: example123
+Name: [your name]
+Details: 2 months ($${(available ? price.toFixed(2) : 'N/A')})
+Management password: [password]
 DNS record(s):
   1. Type: A, Points to: 192.0.2.1
   2. Type: TXT, Points to: "verification=abc123"
 
 Payment method: [Nano / Banano / USDC / BTC-LN]
+Discount code: [code]
 
-Please confirm and provision. Thanks,
-John Doe`;
+Please confirm and provision.`;
       emailBody.value = template;
 
       // Details link
@@ -491,6 +497,7 @@ John Doe`;
   </script>
 </body>
 </html>
+
 
 
 
