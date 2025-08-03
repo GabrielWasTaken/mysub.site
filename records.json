@@ -12,7 +12,7 @@
         "value": "verification=abc123"
       }
     ]
-  }
+  },
   "www.mysub.site": {
     "password": "secret123",
     "records": [
@@ -24,4 +24,5 @@
     ]
   }
 }
+
 
