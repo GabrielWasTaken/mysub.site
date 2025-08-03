@@ -17,12 +17,18 @@
     "password": "secret123",
     "records": [
       {
+        "type": "A",
+        "points_to": "198.51.100.5"
+      }
+    ]
+  },
+  "wps.mysub.site": {
+    "password": "secret123",
+    "records": [
+      {
         "type": "CNAME",
-        "points_to": "gabrielwastaken.github.io",
-        "ttl": "60"
+        "value": "target.example.com"
       }
     ]
   }
 }
-
-
