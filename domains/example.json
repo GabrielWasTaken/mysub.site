@@ -1,0 +1,10 @@
+{
+  "full_subdomain": "example.mysub.site",
+  "registered_on": "2025-06-01T12:00:00Z",
+  "next_payment": "2025-08-01T12:00:00Z",
+  "duration_months": 2,
+  "records": [
+    { "type": "A", "target": "192.0.2.1" },
+    { "type": "TXT", "target": "verification=abc123" }
+  ]
+}
