@@ -13,28 +13,20 @@
       }
     ]
   },
-  "www.mysub.site": {
-    "password": "secret123",
-    "records": [
-      {
-        "type": "A",
-        "points_to": "198.51.100.5"
-      }
-    ]
-  },
   "cantoneswaza.mysub.site": {
     "password": "0123456",
     "records": [
       {
         "type": "A",
-        "value": "192.0.2.1"
-      }
+        "points_to": "192.0.2.1",
+        "ttl": "60"
+      },
       {
         "type": "TXT",
         "value": "verification=abc123"
-        "ttl": "60"
       }
     ]
   }
 }
+
 
