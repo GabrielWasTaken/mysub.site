@@ -1,0 +1,4 @@
+This is a Brave Creators publisher verification file.
+
+Domain: mysub.site
+Token: 011cfe31561e222e51f70c7faa161f371c4f0e501bcc9f45f21daf93e69b3924
